@@ -2,8 +2,19 @@ package parser
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
+
+var isTrace = false
+func init() {
+	for _, a := range os.Args {
+		if a == "--trace" || a == "-t" {
+			isTrace = true
+			break
+		}
+	}
+}
 
 var traceLevel int
 
@@ -14,7 +25,9 @@ func identLevel() string {
 }
 
 func tracePrint(fs string) {
-	fmt.Printf("%s%s\n", identLevel(), fs)
+	if isTrace {
+		fmt.Printf("%s%s\n", identLevel(), fs)
+	}
 }
 
 func incIdent() { traceLevel = traceLevel + 1 }
