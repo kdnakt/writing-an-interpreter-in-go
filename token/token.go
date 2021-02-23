@@ -47,6 +47,8 @@ const (
 	STRING = "STRING"
 
 	COLON = ":"
+
+	MACRO = "MACRO"
 )
 
 var keywords = map[string]TokenType{
@@ -57,6 +59,7 @@ var keywords = map[string]TokenType{
 	"if":     IF,
 	"else":   ELSE,
 	"return": RETURN,
+	"macro":  MACRO,
 }
 
 // LookUpIdent returns TokenType for the input string
